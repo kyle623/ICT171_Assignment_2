@@ -153,7 +153,6 @@ save and exit
 - WordPress Address (URL): http://domain.com
 - Site Address (URL): http://domain.com
 - Change Timezone to UTC +8 then save changes
-![Step 20](https://github.com/user-attachments/assets/b1bd7037-f4b2-4608-9504-bd7d4716f8b0)
 
 
 ## 21. Install  SSL/TLS with lets encrypt
