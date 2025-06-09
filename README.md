@@ -1,5 +1,8 @@
 # Building an Amazon EC2 WordPress Web Server With DNS and SSL/TLS
 
+### [Diablo 4 World Boss Tracker](https://ict171-34211995.site/)
+### [Video Explainer/Documentation]()
+
 ## Kyle Cleofe 34211995
 
 ## 1. Intro
@@ -162,5 +165,35 @@ sudo apt install certbot python3-certbot-apache
 ```
 sudo certbot --apache
 ```
+Certbot will prompt you for some information: email address, agree to TOS and Certbot will configure your apache config for TLS
 
 ## 23. Activate https on both names and final URL adjustments
+Activate on both names when prompted by cerbot
+Test your site  https://yourdomain.com in a browser, the browser should show a secure lock icon.
+
+## 24. Edit wp-config.php and force direct file writes
+```
+ sudo nano /var/www/html/wordpress/wp-config.php
+ define('FS_METHOD', 'direct');
+```
+
+## 25. Fix Directory/File Permissions and Ownership
+Set permissions on wordpress dir then set correct ownership
+```
+sudo find /var/www/html/wordpress -type d -exec chmod 755 {} \;
+sudo find /var/www/html/wordpress -type f -exec chmod 644 {} \;
+
+sudo chown -R www-data:www-data /var/www/html/wordpress
+```
+
+## 26. install wpcode and wordfence security plugins in /wp-admin/plugins.php
+- Log into https://yourdomain.com/wp-admin/ and go to Plugins > Add New
+- Search WPCode and click install then activate
+- Search Wordfence Security and click install
+
+## 27. Add GitHub script in WPCode
+- In WP admin, go to Code Snippets and click add Snippet.
+- Paste your script directly from the GitHub
+- Pick HTML Snippet
+- Toggle Active and hit Save Snippet
+- Configure to Short Code and copy wpcode id to clipboard and add to site using a paragraph object
