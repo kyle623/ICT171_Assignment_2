@@ -1,0 +1,34 @@
+<!-- Display the countdown timer in an element -->
+<p id="demo" class="has-text-align-center has-x-large-font-size"></p>
+
+<script>
+
+const INTERVAL_MS = 3.5 * 60 * 60 * 1000; // 3.5 hrs in ms
+
+// First target
+let countDownDate = (function getNextSpawn () {
+  const last = Date.parse("June 4, 2025, 17:30");      //change  when out of sync!!!!!!!!!!!
+  const now = Date.now();
+  return last + Math.ceil((now - last) / INTERVAL_MS) * INTERVAL_MS;
+})();
+
+// Timer function
+const x = setInterval(function () {
+  const now = Date.now();
+  let  distance = countDownDate - now;
+
+  // roll forward if zero
+  if (distance <= 0) {
+    countDownDate += INTERVAL_MS;
+    distance = countDownDate - now;
+  }
+
+  // time in ms calculatd
+  const hours = Math.floor((distance % 86_400_000) / 3_600_000);  
+  const minutes = Math.floor((distance % 3_600_000) / 60_000);  
+  const seconds = Math.floor((distance % 60_000) / 1_000); 
+
+  // Display the result in the element with id="demo"
+  document.getElementById('demo').textContent = hours + 'h ' + minutes + 'm ' + seconds + 's';
+}, 1000);   //from w3schools
+</script>
