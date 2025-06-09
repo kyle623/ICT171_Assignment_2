@@ -131,6 +131,7 @@ Save and exit then restart apache
 
 ## 18. Link Your Domain Name via DNS and update apache config
 Go to namecheap or DNS hosting servidce and create a new A record for your domain: point it to the Elastic IP address of your EC2 instance. For example:
+![Step 18](https://github.com/user-attachments/assets/86b6f940-187e-423d-9220-f65170011deb)
 
 
 Next, configure Apache to recognize and answer to your domain name. Edit the same file 000-default.conf again
